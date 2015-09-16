@@ -35,7 +35,7 @@ public class BeaconRegion : Region, BeaconRegionWrappable {
     internal  let clBeaconRegion : CLBeaconRegion
     
     public var beacons : [Beacon] {
-        return self._beacons.sort() {(b1:Beacon, b2:Beacon) -> Bool in
+        self._beacons.sortInPlace() {(b1:Beacon, b2:Beacon) -> Bool in
             switch b1.discoveredAt.compare(b2.discoveredAt) {
             case .OrderedSame:
                 return true
@@ -45,6 +45,7 @@ public class BeaconRegion : Region, BeaconRegionWrappable {
                 return true
             }
         }
+        return self._beacons
     }
     
     public var proximityUUID : NSUUID? {

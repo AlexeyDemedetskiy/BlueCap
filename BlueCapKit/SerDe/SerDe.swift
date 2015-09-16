@@ -27,7 +27,7 @@ func byteArrayValue<T>(value:T) -> [UInt8] {
 
 func reverseBytes<T>(value:T) -> T {
     var result = value
-    let swappedBytes = NSData(bytes:byteArrayValue(value).reverse(), length:sizeof(T))
+    let swappedBytes = NSData(bytes:Array(byteArrayValue(value).reverse()), length:sizeof(T))
     swappedBytes.getBytes(&result, length:sizeof(T))
     return result
 }
